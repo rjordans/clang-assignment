@@ -17,9 +17,8 @@ target_link_libraries(${PROJECT_NAME} gtest
   clangFrontend
   clangSerialization)
 
-set(INCLUDE_DIRS 
-"${CMAKE_SOURCE_DIR}/logEventFinder")
+set(INCLUDE_DIRS "${CMAKE_SOURCE_DIR}/logEventFinder")
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIRS})
 include(GoogleTest)
 gtest_discover_tests(${PROJECT_NAME})
-add_test(${PROJECT_NAME} test1)
+#add_test(${PROJECT_NAME} all_tests)
