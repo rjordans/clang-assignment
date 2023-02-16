@@ -76,9 +76,89 @@ int main() {
 	v.push_back(new Rectangle);
 	for (auto s: v) {
 		s->clone();
-		int i = 0; 
 	}
 	cout << "Done!" << endl;
 	return 0; 
+}
+```
+
+A conceptual example for the visitor pattern
+
+```cpp
+// visitors.h : Include file for standard system include files,
+// or project specific include files.
+
+#pragma once
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+//forward declaration of AST node classes neede dby the visitor
+
+class Stmt;
+class Expr;
+
+//Visitor interface
+class Visitor {
+public:
+	virtual void visit(const Stmt* stmt) = 0;
+	virtual void visit(const Expr* expr) = 0;
+};
+
+class ASTNode {public:
+	virtual ~ASTNode() {}
+	virtual void acccept(Visitor* visitor) const = 0;
+};
+
+class Stmt: public ASTNode {
+public:
+	void acccept(Visitor* visitor) const override {
+		visitor->visit(this);
+	}
+	static string whoAmI() { return "this is a stmt"; }
+	static string onlyForStmt() { return "only for stmt"; }
+};
+
+class Expr : public ASTNode {
+public:
+	void acccept(Visitor* visitor) const override {
+		visitor->visit(this);
+	}
+	static string whoAmI() { return "this is an expr"; }
+	static string onlyForExpr() { return "only for expr"; }
+};
+
+//visitors you can create without chnaging Stmt and Expr calsses
+class WhoAmI : public Visitor {
+	void visit(const Stmt* stmt) override {
+		cout << stmt->whoAmI() << endl;
+	}
+	void visit(const Expr* expr) override {
+		cout << expr->whoAmI() << endl;
+	}
+};
+
+class OnlyForMe : public Visitor {
+	void visit(const Stmt* stmt) override {
+		cout << stmt->onlyForStmt() << endl;
+	}
+	void visit(const Expr* expr) override {
+		cout << expr->onlyForExpr() << endl;
+	}
+};
+
+int main()
+{
+	vector<ASTNode*> nodes = { new Stmt, new Expr };
+	WhoAmI* whoAmI = new WhoAmI;
+	OnlyForMe* onlyForMe = new OnlyForMe;
+
+	for (ASTNode* node:nodes) {
+		node->acccept(whoAmI);
+		node->acccept(onlyForMe);
+	}
+	cout << "Done!" << endl;
+	return 0;
 }
 ```
