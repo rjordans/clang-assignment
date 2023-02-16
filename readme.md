@@ -4,19 +4,26 @@ This exercise will teach us how to build a custom static analysis tool with Clan
 We will use Visual Studio 2019 and CMake.
 
 # Preparation
-## Install and compile clang
+To run this code, you will need a computer with a recent version of the LLVM/clang tools installed, including clang-query.
+
+## Installation of LLVM/clang required parts
+### Linux (Ubuntu)
+On Linux you can get typically these from the software repository.  Ubuntu 20.04 and later have packages with a recent enough version of LLVM.
+
+You will need the following packages: build-essential, cmake, libclang-dev, clang-tools
+
+### Windows
+
+For Windows there is no pre-built version of LLVM/clang available with the right tools added, you can use the Windows Subsystem for Linux (WSL) and install a Ubuntu 22.04 inside Windows.  Once you've done that you can use the Ubuntu instructions above.
+
+Alternatively, you can build your own copy of LLVM/clang (which takes very long).  Follow these instructions  [Clang installation on windows 10](wiki/Clang-installation-on-windows-10.md)
+
 This step takes a long time, so running it well before the hands-on session is advised.
 
-Follow these instructions  [Clang installation on windows 10](wiki/Clang-installation-on-windows-10.md)
-
 ## Compile the code 
-Set the environment variables:
-`CLANG_DIR` and `LLVM_DIR`
+Open a bash shell and change into the directory where you've put the code for the assignment.
 
-Open Visual Studio 2019 and use the `Developer PowerShell`.
-Change the directory to the directory of the exercise:
-`<EXERCISE>\code\Stand-Alone-Libtooling`.
-Make a directory containing all the build artifacts and run CMake as follows. 
+Make sure you are inside the `clang-assignment` folder.  Run CMake as follows to generate the project build directory:
 
 ```
 mkdir build
@@ -24,18 +31,16 @@ cd build
 cmake ..
 ```
 
-There is a Visual Studio solution file in the build directory: `analysis-tools.sln`.
-Open that file:
-`File>Open>Project\Solution`, navigate to the build directory, select `analysis-tools.sln`, and click on `Open`.
+By default this will generate a Makefile that allows you to build all of the project parts.
 
-This will open the solution in Visual Studio. 
-Right-click on the solution at the top of the `Solution Explorer` pane on the right, and run `Build Solution`.
+To compile (build) an up-to-date version of the executable you can run the command `make` inside this build directory.
+
 
 ## Run the tests (in Debug mode)
 
-Right-click on the project `all_tests`. Select
-`Set as Startup Project`. Right-click again and select `Debug\Start New Instance`.
-You should see the test `LOG_FINDER.test1` running and passing with an empty output on the Console.
+Running the command `make all test` will build the program and execute the test sequence.
+
+This generates a new directory inside the build directory named `Testing/Temporary`, which contains a copy of the test outupt in a file (`LastTest.log`) together with the output of your code.
 
 # Coding
 You may start exploring the resources on clang summarized here: [something-about-clang](wiki/something-about-clang.md).
@@ -187,3 +192,5 @@ id: 54 unit: IEC descr: this is the forth possible event [User=%s] /path-to/AFak
 id: 4072 unit: IEC descr: this is the seventh possible event [last stream tag=%s] /path-to/AFakeLoggingFramework/AFakeLoggingFramework/AFakeLoggingFramework.cpp:103:10
 ```
 
+## Submission
+Submission of your patterns on Canvas can be done as a simple text file (or as a patch if you're using git), make sure to include both the patterns and to mention how many matches you got for each of them.
