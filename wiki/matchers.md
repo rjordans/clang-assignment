@@ -115,7 +115,7 @@ We use the following matcher, found experimenting with clang-query.exe:
 
 Please notice that this matcher detects if statement with and without the else clause.
 
-After creating the tool, as also explained [here](ast-visitors), we need to create a MatchFinder, which is a clang class allowing us to apply AST matchers, and a MatchCallback, which is a clang class whose `run` method is called back each time a match registered for it is met. In our case, the MatchFinder is: 
+After creating the tool, as also explained [here](ast-visitors.md), we need to create a MatchFinder, which is a clang class allowing us to apply AST matchers, and a MatchCallback, which is a clang class whose `run` method is called back each time a match registered for it is met. In our case, the MatchFinder is: 
 
 ```cpp
 StatementMatcher ifMatcher =

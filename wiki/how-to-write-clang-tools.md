@@ -22,5 +22,5 @@ Examples of tools are syntax checkers and refactoring tools.
 Use LibTooling when you want to run tools over a single file or a specific subset of files independently of the build system and need complete control over the Clang AST. 
 You can find more information [here: LibTooling](https://clang.llvm.org/docs/LibTooling.html).
 LibTooling is the interface we are going to use in our case, and we are going to have a couple of tutorials on it:
-- [recursive visitors](ast-visitors)
-- [matchers](matchers)
+- [recursive visitors](ast-visitors.md)
+- [matchers](matchers.md)

@@ -15,10 +15,10 @@ First of all, where to find information: many tutorials, informational blog page
 
 However, next, I will briefly introduce clang in a summary of all collected information, with the focus on what we need to be fully operational for building custom static analysis tools.
 
-1) ### [First, we need to be sufficiently fluent in **a reasonably recent version of C++**](Recent-cpp)
+1) ### [First, we need to be sufficiently fluent in **a reasonably recent version of C++**](Recent-cpp.md)
 
-2) ### [Then we need to know **how to write a clang tools**](how-to-write-clang-tools)
+2) ### [Then we need to know **how to write a clang tools**](how-to-write-clang-tools.md)
 
-3) ### [We can spend a word on the **clang AST**](clang-ast)
+3) ### [We can spend a word on the **clang AST**](clang-ast.md)
 
-4) ### [Finally, we need to know **how to navigate the AST**](navigate-the-ast)
+4) ### [Finally, we need to know **how to navigate the AST**](navigate-the-ast.md)

@@ -7,7 +7,7 @@ We will use Visual Studio 2019 and CMake.
 ## Install and compile clang
 This step takes a long time, so running it well before the hands-on session is advised.
 
-Follow these instructions  [Clang installation on windows 10](wiki/Clang-installation-on-windows-10)
+Follow these instructions  [Clang installation on windows 10](wiki/Clang-installation-on-windows-10.md)
 
 ## Compile the code 
 Set the environment variables:
@@ -38,10 +38,10 @@ Right-click on the project `all_tests`. Select
 You should see the test `LOG_FINDER.test1` running and passing with an empty output on the Console.
 
 # Coding
-You may start exploring the resources on clang summarized here: [something-about-clang](wiki/something-about-clang).
+You may start exploring the resources on clang summarized here: [something-about-clang](wiki/something-about-clang.md).
 
 ## Create clang matchers 
-Before starting this session, read about clang [ASTMatchers](wiki/matchers) and [AST-dump](wiki/dump-ast.md)
+Before starting this session, read about clang [ASTMatchers](wiki/matchers.md) and [AST-dump](wiki/dump-ast.md)
 
 ### Detect the log_events declaration
 
